@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const db_link = "mongodb://localhost:27017/kubernetes"
+const db_link = process.env.DB_LINK
 const Connection = async()=>{
     try {
         await mongoose.connect(db_link);
