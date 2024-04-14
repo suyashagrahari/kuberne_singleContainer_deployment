@@ -6,7 +6,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - "3000:3000"
     container_name: react-container
     environment:
       - WATCH_PACK_POLLING=true
@@ -22,7 +22,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - "8000:8000"
     container_name: express-container
     networks:
       - mern-stack-network
@@ -32,12 +32,12 @@ services:
       - mongo
   
   mongo:
-    image: mongo    # Fixed syntax: `build` removed, `image` added
+    image: mongo
     ports:
-      - 27017:27017
+      - "${PORT}:27017"
     container_name: mongo-container
     volumes:
-      - mongoData:/data/db   # Volume name corrected
+      - mongoData:/data/db
     networks:
       - mern-stack-network
     

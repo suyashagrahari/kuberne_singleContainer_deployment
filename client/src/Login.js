@@ -18,7 +18,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const res = await axios.post("http://localhost:6001/api/v1/login",user);
+        const res = await axios.post("http://localhost:8000/api/v1/login",user);
     
         if(res.status===200)
         {
@@ -57,7 +57,7 @@ const Signup = () => {
                                 <input type="checkbox" id="remember-me" className="mr-2"/>
                                 Remember me
                             </label>
-                            <a href="#" className="text-sm text-blue-500 hover:underline mb-0.5">Forgot password?</a>
+                            <Link to={"/"}  className="text-sm text-blue-500 hover:underline mb-0.5">Forgot password?</Link>
                             <p className="text-gray-900 mt-4"> Don't have an account? <Link to={"/singin"} className="text-sm text-blue-500 -200 hover:underline mt-4">Sing in</Link></p>
                         </div>
                         <button type="submit" className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150">Login</button>

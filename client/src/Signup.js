@@ -19,14 +19,14 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:6001/api/v1/singin", user);
+    const res = await axios.post("http://localhost:8000/api/v1/singin", user);
     
     if(res.status === 200)
     {
       navigate("/login")
     }
-    setUser({name:"",email:"",password:""})
-  };
+    setUser({})
+  }
 
   return (
     <>
@@ -65,11 +65,11 @@ const Signup = () => {
                 <input type="checkbox" id="remember-me" className="mr-2" />
                 Remember me
               </label>
-              <a
-                href="#"
+              <Link
+               to={'/'}
                 className="text-sm text-blue-500 hover:underline mb-0.5">
                 Forgot password?
-              </a>
+              </Link>
               <p className="text-gray-900 mt-4">
                 {" "}
                 Don't have an account?{" "}

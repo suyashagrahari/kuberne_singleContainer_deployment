@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 require("./db")
 const userModel = require("./models/Userschema")
-const port = process.env.PORT || 6001;
+const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(cors());
 
@@ -31,6 +31,7 @@ app.post("/api/v1/singin",async(req,res)=>{
         })
         const newUser = await user.save();
         console.log(newUser);
+        console.log("data ghus gya db m ");
         res.status(200).send(newUser)
     } catch (error) {
         console.log(error);
