@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  front:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: client-container
+    environment:
+      - WATCH_PACK_POLLING=true
+    networks:
+      - mern-stack-network 
+    volumes:
+      - ./client:/app
+    depends_on:
+      - backend
+  
+  backend:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    container_name: server-container
+    networks:
+      - mern-stack-network
+    volumes:
+      - ./server:/app
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo
+    ports:
+      - "${PORT}:27017"
+    container_name: mongo-container
+    volumes:
+      - mongoData:/data/db
+    networks:
+      - mern-stack-network
+    
+networks:
+  mern-stack-network:
+
+volumes:
+  mongoData:
